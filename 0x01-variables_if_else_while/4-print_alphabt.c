@@ -13,15 +13,19 @@
 int main(void)
 {
 	char letter;
-
+	 /**
+	 * letter
+	 *
+	 * Description: Variable used for letters
+	 */
 	letter = 'a';
 	while (letter <= 'z')
 	{
-        	if ( letter != 'e' && letter != 'q')
-        	{
-                	putchar(letter);
-        	}
-        	letter++;
+		if (letter != 'e' && letter != 'q')
+		{
+			putchar(letter);
+		}
+		letter++;
 	}
 	putchar('\n');
 	return (0);
