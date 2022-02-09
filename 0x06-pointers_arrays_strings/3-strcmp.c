@@ -9,6 +9,7 @@
  * @s2: Pointer to second string.
  *
  * Description: The standard library provides a similar function: strcmp.
+ * Run man strcmp to learn more.
  * Return: Outputs the difference of s1 and s2.
  */
 int _strcmp(char *s1, char *s2)
