@@ -2,7 +2,8 @@
 /**
  * main - Entry point
  *
- * Print Text on screen
+ * Description: Print Text on screen
+ * Return: 0
  */
 int main(void)
 {
