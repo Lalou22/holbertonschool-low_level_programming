@@ -24,7 +24,7 @@ int main(void)
 		temp = numbers[i];
 		for (j = i; j < max; j++)
 		{
-			if(numbers[j] % temp == 0)
+			if (numbers[j] % temp == 0)
 				numbers[j] = numbers[j] / temp;
 		}
 		aux = aux * temp;

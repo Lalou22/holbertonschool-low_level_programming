@@ -12,7 +12,7 @@
 void print_number(int n)
 {
 	int multi = 10;
-	
+
 	if (n < 0)
 	{
 		_putchar('-');
