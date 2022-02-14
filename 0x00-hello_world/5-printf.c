@@ -1,12 +1,12 @@
 #include <stdio.h>
-
 /**
  * main - Entry point
  *
- * Print Text on screen
+ * Description: Print Text on screen.
+ * Return: Zero
  */
 int main(void)
 {
-    printf("with proper grammar, but the outcome is a piece of art,\n");
-    return (0);
+	printf("with proper grammar, but the outcome is a piece of art,\n");
+	return (0);
 }
