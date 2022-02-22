@@ -1,5 +1,5 @@
 /*
- * File: 2-calloc.c
+ * File: 3-array_range.c
  * Auth: Lalo Rdz
  */
 #include <stdlib.h>
