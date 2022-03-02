@@ -35,16 +35,16 @@ list_t *add_node_end(list_t **head, const char *str)
 		free(node);
 		return (NULL);
 	}
-	
+
 	node->len = i;
 	node->next = NULL;
-	
+
 	if (*head == NULL)
 	{
 		*head = node;
 		return (node);
 	}
-	
+
 	tmp = *head;
 	while (tmp->next)
 		tmp = tmp->next; /*Iterates through the list */
