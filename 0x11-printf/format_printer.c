@@ -4,19 +4,6 @@
  */
 #include <stdio.h>
 #include "main.h"
-int print_char(va_list c);
-int print_string(va_list s);
-int print_int(va_list i);
-int print_bin(va_list i);
-int print_unsigned_int(va_list i);
-int print_oct(va_list i);
-int print_x(va_list i);
-int print_X(va_list i);
-int print_S(va_list S);
-int print_p(va_list p);
-int print_r(va_list r);
-int print_two_hex(char c);
-int print_int_recursion(unsigned int n, int base, int selector);
 /**
  * check_format - Gets the existance of a selected format.
  * @format: Character string composed of zero or more directives.
