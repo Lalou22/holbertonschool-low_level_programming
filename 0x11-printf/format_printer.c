@@ -82,6 +82,11 @@ int print_int(va_list i)
 	int count = 0;
 	unsigned int n;
 
+	if (number == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
 	if (number < 0)
 	{
 		_putchar('-');
@@ -104,6 +109,11 @@ int print_bin(va_list i)
 	unsigned int number = va_arg(i, unsigned int);
 	int count = 0;
 
+	if (number == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
 	count = print_int_recursion(number, 2, 0);
 	return (count);
 }
@@ -119,6 +129,11 @@ int print_unsigned_int(va_list i)
 	unsigned int number = va_arg(i, unsigned int);
 	int count = 0;
 
+	if (number == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
 	count = print_int_recursion(number, 10, 0);
 	return (count);
 }
@@ -134,6 +149,11 @@ int print_oct(va_list i)
 	unsigned int number = va_arg(i, unsigned int);
 	int count = 0;
 
+	if (number == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
 	count = print_int_recursion(number, 8, 0);
 	return (count);
 }
@@ -149,6 +169,11 @@ int print_x(va_list i)
 	unsigned int number = va_arg(i, unsigned int);
 	int count = 0;
 
+	if (number == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
 	count = print_int_recursion(number, 16, 1);
 	return (count);
 }
@@ -164,6 +189,11 @@ int print_X(va_list i)
 	unsigned int number = va_arg(i, unsigned int);
 	int count = 0;
 
+	if (number == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
 	count = print_int_recursion(number, 16, 2);
 	return (count);
 }
@@ -195,11 +225,6 @@ int print_int_recursion(unsigned int n, int base, int selector)
 		break;
 	}
 
-	if (number == 0)
-	{
-		_putchar('0');
-		return(1);
-	}
 	if ((number / base == 0) && (number % base == 0))
 	{
 		return (0);
