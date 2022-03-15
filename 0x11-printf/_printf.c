@@ -49,7 +49,10 @@ int _printf(const char *format, ...)
 		else
 		{
 			if (format[index + 1] == '\0')
+			{
+				count++;
 				break;
+			}
 
 			_putchar('%');
 			count++;
