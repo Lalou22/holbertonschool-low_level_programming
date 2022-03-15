@@ -49,10 +49,13 @@ int print_char(va_list c)
 {
 	char letter = (char)va_arg(c, int);
 
-	if (letter == -96)
-		_putchar('%');
-	else
-		_putchar(letter);
+	/*
+	 *if (letter == -96)
+	 *	_putchar('%');
+	 *else
+	 *	_putchar(letter);
+	*/
+	_putchar(letter);
 	return (1);
 }
 /**
