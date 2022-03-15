@@ -17,7 +17,7 @@ int (*check_format(const char *format))(va_list)
 	print_t printer[] = {
 		{"c", print_char},
 		{"s", print_string},
-		{"%", print_char},
+		/*{"%", print_char},*/
 		{"i", print_int},
 		{"d", print_int},
 		{"b", print_bin},

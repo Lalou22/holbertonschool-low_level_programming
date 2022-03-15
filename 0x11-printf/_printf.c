@@ -46,6 +46,14 @@ int _printf(const char *format, ...)
 			index += 2;
 			continue;
 		}
+		else
+		{
+			_putchar('%');
+			_putchar(format[index + 1]);
+			count += 2;
+			index += 2;
+			continue;
+		}
 	}
 
 	va_end(valist);
