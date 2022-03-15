@@ -17,7 +17,6 @@ int (*check_format(const char *format))(va_list)
 	print_t printer[] = {
 		{"c", print_char},
 		{"s", print_string},
-		/*{"%", print_char},*/
 		{"i", print_int},
 		{"d", print_int},
 		{"b", print_bin},
@@ -49,12 +48,6 @@ int print_char(va_list c)
 {
 	char letter = (char)va_arg(c, int);
 
-	/*
-	 *if (letter == -96)
-	 *	_putchar('%');
-	 *else
-	 *	_putchar(letter);
-	*/
 	_putchar(letter);
 	return (1);
 }
@@ -202,6 +195,11 @@ int print_int_recursion(unsigned int n, int base, int selector)
 		break;
 	}
 
+	if (number == 0)
+	{
+		_putchar('0');
+		return(1);
+	}
 	if ((number / base == 0) && (number % base == 0))
 	{
 		return (0);
