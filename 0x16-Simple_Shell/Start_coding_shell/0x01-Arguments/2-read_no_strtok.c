@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char* _strtok(char* s, char d);
+char *_strtok(char *s, char d);
 int _strlen(char *s);
 
 /**
@@ -36,9 +36,9 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 		printf("$ ");
 		getline(string_pointer, &size, stdin);
 		token = _strtok(string, ' ');
-		while( token != NULL )
+		while (token != NULL)
 		{
-			printf( "%s\n", token);
+			printf("%s\n", token);
 			token = _strtok(NULL, ' ');
 		}
 	}
@@ -50,20 +50,20 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
  * @s: String to be breaked.
  * @d: Character used as a delimiter.
  *
- * Function that breaks a string into a series of tokens using the 
+ * Function that breaks a string into a series of tokens using the
  * delimiter delim. Similar to the standard strtok.
  * Return: Pointer to the first token found in the string.
  */
-char* _strtok(char* s, char d)
+char *_strtok(char *s, char d)
 {
-	static char* input = NULL;
+	static char *input = NULL;
 
 	if (s != NULL)
 		input = s;
 	if (input == NULL)
-		return NULL;
+		return (NULL);
 
-	char* result = (char *) malloc(_strlen(input) + 1);
+	char *result = (char *) malloc(_strlen(input) + 1);
 	int i = 0;
 
 	for (; input[i] != '\0'; i++)
@@ -76,7 +76,7 @@ char* _strtok(char* s, char d)
 		{
 			result[i] = '\0';
 			input = input + i + 1;
-			return result;
+			return (result);
 		}
 	}
 

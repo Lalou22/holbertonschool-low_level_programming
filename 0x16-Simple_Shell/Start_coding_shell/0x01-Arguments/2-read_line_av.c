@@ -34,8 +34,9 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 		printf("$ ");
 		getline(string_pointer, &size, stdin);
 		token = strtok(string, " ");
-		while( token != NULL ) {
-			printf( "%s\n", token);
+		while (token != NULL)
+		{
+			printf("%s\n", token);
 			token = strtok(NULL, " ");
 		}
 	}
