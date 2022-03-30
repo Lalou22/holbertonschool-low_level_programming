@@ -77,3 +77,87 @@ void print_elem(char *dir_)
 		i++;
 	}
 }
+
+/**
+ * add_node - Adds a new node at the beginning of a list_t list.
+ * @head: Pointer to the header that Starts the list.
+ * @str: String to be added (malloc'ed string).
+ *
+ * Description: Function that adds a new node at the beginning of a list_t
+ * list. And str needs to be duplicated.
+ * Return: The address of the new element, or NULL if it failed
+ */
+list_t *add_node(list_t **head, const char *str)
+{
+	list_t *node;
+
+	if (str == NULL)
+		return (NULL);
+
+	node = malloc(sizeof(list_t));
+	if (node == NULL)
+		return (NULL);
+
+	node->str = strdup(str);
+	if (node->str == NULL)
+	{
+		free(node);
+		return (NULL);
+	}
+	node->next = *head;
+	*head = node;
+	return (node);
+}
+
+/**
+ * print_list - Prints all the elements of a list_t list.
+ * @h: Pointer to the header that Starts the list.
+ *
+ * Description: Prints the elements of the list's head and then starts printing
+ * the next elements. Then returns the number of the printed nodes.
+ * If str is NULL, print [0] (nil)
+ * Return: The number of nodes.
+ */
+size_t print_list(const list_t *h)
+{
+	unsigned int i;
+	const list_t *aux;
+
+	aux = h; /* Gets the list's First element "Head". */
+	for (i = 0; aux; i++)
+	{
+		if (aux->str == NULL)
+			printf("(nil)\n");
+		else
+			printf("%s\n", aux->str);
+		aux = aux->next; /* Gets the next element of the list. */
+	}
+	return (i);
+}
+
+
+void add_substring(list_t *head, char *dir_)
+{
+	int i = 0, j = 0;
+	int len = 0;
+	char *dest;
+	
+
+	while (dir_[i])
+	{
+		if (dir_[i] == ':' || dir_[i + 1] == '\0')
+	        {
+			if (dir_[i + 1] == '\0')
+				i++;
+		        dest = malloc(sizeof(char) * 100);
+			len = i - j;
+			add_node(&head, strncpy(dest, dir_ + j, len));
+			j = i + 1;
+		        free(dest);
+			if (dir_[i] == '\0')
+				i--;
+		}
+		i++;
+	}
+        print_list(head);
+}
