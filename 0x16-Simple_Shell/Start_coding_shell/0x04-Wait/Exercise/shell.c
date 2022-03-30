@@ -13,7 +13,7 @@
  * @ac: Number of arguments passed to the program.
  * @av: Array of strings. Each is one of the arguments that was passed.
  *
- * Description: Using everything we saw, write a first version of a super simple
+ * Description: Write a first version of a super simple
  * shell that can run commands with their full path, without any argument.
  * Return: Always 0.
  */
@@ -35,9 +35,8 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 		printf("$ ");
 		getline(string_pointer, &size, stdin);
 		system(command);
-		printf("----------------------------------------\n\n");
 		sleep(3);
-		/*exit(0);*/
+		printf("\n");
 	}
 	return (0);
 }
