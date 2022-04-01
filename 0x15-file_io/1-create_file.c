@@ -1,5 +1,5 @@
 /*
- * File: 0-read_textfile.c
+ * File: 1-create_file.c
  * Auth: Lalo Rdz
  */
 #include "main.h"
@@ -29,9 +29,9 @@ int create_file(const char *filename, char *text_content)
 
 	len = _strlen(text_content);
 	output = write(_file, text_content, len);
+	close(_file);
 	if (output == -1 || output != len)
 		return (-1);
-	close(_file);
 	return (1);
 }
 
