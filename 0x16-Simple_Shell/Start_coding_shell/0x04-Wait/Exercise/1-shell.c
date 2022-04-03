@@ -27,7 +27,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 	char *argv[] = {NULL, NULL};
 	char *envp[] = {NULL};
 	int status;
-	pid_t child_pid;
+	pid_t child_pid, my_pid;
 
 	command = (char *) malloc(size);
 	if (command == NULL)
@@ -54,8 +54,10 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 			perror("Error:");
 			return (1);
 		}
+		my_pid = getpid();
 		if (child_pid == 0)
 		{
+			printf("Child Process: %u\n", my_pid);
 			if (execve(token, argv, envp) == -1)
 				perror("Could not execve");
 		}
@@ -63,6 +65,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 		{
 			sleep(3);
 			wait(&status);
+			printf("Parent Process: %u\n", my_pid);
 			printf("\n");
 		}
 	}
