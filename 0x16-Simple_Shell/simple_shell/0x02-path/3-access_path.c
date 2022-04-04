@@ -261,7 +261,7 @@ char **path_com(char **_path, char *command)
 		/* Test access function */
 		if (access(str, F_OK) == -1)
 		{
-			tokens[i] = _strcat(str, "\t\tFile Not Found");
+		        aux = "\t\tFile Not Found";
 		}
 		else
 		{
@@ -269,8 +269,8 @@ char **path_com(char **_path, char *command)
 				aux = "\t\tFile Found\t\tNot Execute Permission";
 			else
 				aux = "\t\tFile Found\t\tExecute Permission";
-			tokens[i] = _strcat(str, aux);
 		}
+		tokens[i] = _strcat(str, aux);
 		i++;
 	}
 	return (tokens);
