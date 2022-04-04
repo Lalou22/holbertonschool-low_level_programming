@@ -26,7 +26,6 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 		/* Modification for test */
 		line = read_line();
 		args = split_line(line);
-		
 		child_pid = fork();
 		if (child_pid == -1)
 		{
