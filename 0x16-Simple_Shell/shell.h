@@ -14,7 +14,7 @@
 /* Functions created to Parse and Tokenize the User's Input */
 char *read_line(void);
 char **split_line(char *line);
-void print_parse(char **args); /* Function used to test the parsing and tokenizing */
+void print_parse(char **args);
 
 /* Functions used to work with char arrays */
 int _strlen(char *s);
