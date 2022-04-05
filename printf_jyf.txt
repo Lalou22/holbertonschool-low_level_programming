@@ -1,0 +1,135 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h> 
+
+int _printf(const char *format, ...);
+int _putchar(char c);
+int _putstring(char *s);
+int _putint(int num);
+
+int main()
+{
+    int s1;
+    int s2;
+    
+    s1 = printf("%i\n", 15);
+    s2 = _printf("%i\n", 15);
+    printf("\ns1: %i s2: %i\n", s1, s2);
+    return 0;
+}
+
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
+int _putstring(char *s)
+{
+    int i = 0, count = 0;
+    
+    while (s[i] != '\0')
+    {
+        count += _putchar(s[i]);
+        i++;
+    }
+    return(count);
+}
+
+int _putint(int num)
+{
+    /* INT_MAX is +2147483647 <-- 10 digit number */
+    /* INT_MIN is -2147483648 <-- 10 digit number */
+    int count = 0;
+    int n = num;
+    int arr[10];
+    int i = 0;
+    int j, r;
+    
+    if (n < 0)
+    {
+        count += _putchar('-');
+        n = n * -1; /* Vamos a volver "positivo" para poder imprirlo sin preocuparnos */
+    }
+    
+    while (n != 0) /* Transformamos al entero en un arreglo (al reves) */
+    {
+        r = n % 10;
+        arr[i] = r;
+        i++;
+        n = n / 10;
+    }
+
+    for (j = i - 1; j > -1; j--) /* imprimimos el arrreglo (al reves) */
+    {
+        count += _putchar(48 + arr[j]); /* Hay que meterlo en codigo ASCII */
+    }
+    
+    return (count);
+}
+
+int _printf(const char *format, ...)
+{
+    /* va_list valist; <- Variable donde se van a almacenar las variadics */
+	/* va_start(); <- Macro que inicia la lista */
+	/* va_arg(nombre, tipo); <- Macro que accede a un dato de la lista */
+	/* va_end(nombre); <- Macro que finaliza la lista cuando acabe */
+    int i = 0;
+    int count = 0;
+    va_list argumentos;
+    char letra;
+    char *str;
+    int num;
+    
+    va_start(argumentos, format); /* nombre de la variable, el ultimo argumento con nombre */
+    
+    while (format[i] != '\0')
+    {
+        if (format[i] != '%')
+        {
+            /* Impresiones regulares */
+            count += _putchar(format[i]);
+            i++;
+        }
+        else
+        {
+            switch(format[i + 1])
+            { 
+                /* En los casos del switch es donde usaremos los va_args */
+                case 'c':
+                    letra = va_arg(argumentos, int);
+                    count += _putchar(letra);
+                    i = i + 2;
+                    break;
+                
+                case 's':
+                    str = va_arg(argumentos, char *);
+                    count += _putstring(str);
+                    i = i + 2;
+                    break;
+                    
+                case '%':
+                    count += _putchar('%');
+                    i = i + 2;
+                    break;
+                    
+                case 'd':
+                    num = va_arg(argumentos, int);
+                    count += _putint(num);
+                    i = i + 2;
+                    break;
+                    
+                case 'i':
+                    num = va_arg(argumentos, int);
+                    count += _putint(num);
+                    i = i + 2;
+                    break;
+            }
+            
+        }
+    }
+    va_end(argumentos);
+    return (count);
+}
+
+
+// https://github.com/Lalou22/holbertonschool-low_level_programming/tree/master/0x11-printf
