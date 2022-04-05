@@ -375,5 +375,4 @@ void func_exec(char *pathname, char **argv, char *const envp[])
 		sleep(3);
 		wait(&status);
 	}
-	printf("\n");
 }
