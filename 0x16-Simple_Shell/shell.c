@@ -54,10 +54,8 @@ int main(int ac, char **av, char **env)
 
 	while (1)
 	{
-		printf("-----Gets command from keyboard-----\n");
 		printf("$ ");
 		line = read_line();
-		printf("\n\n-----Checks path + command-----\n");
 		_path = find_path(_env);
 		_path = path_com(_path, line);
 		execute_path(_path);
@@ -337,7 +335,6 @@ void execute_path(char **_path)
 		_argv = split_line(_path[i], " ");
 		if (access(_argv[0], X_OK) != -1)
 		{
-			printf("Executing the command on: %s\n", _argv[0]);
 			func_exec(_argv[0], _argv, _env);
 			break;
 		}
