@@ -42,7 +42,13 @@ void new_exit(void)
 	exit(EXIT_SUCCESS);
 }
 
-
+/**
+ * clear_screen - Function that clears the shell screen.
+ *
+ * Description: Uses the system call to clear the shell screen.
+ * The system function must be changed to avoid the system call.
+ * Return: Void.
+ */
 void clear_screen(void)
 {
         system("clear");
