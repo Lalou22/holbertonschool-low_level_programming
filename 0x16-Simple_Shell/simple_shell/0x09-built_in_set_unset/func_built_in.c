@@ -20,7 +20,7 @@ char **check_bi(char *bi, char *arg_0, char *arg_1, char **env, int *f)
 	if (_strcmp(bi, "exit") == 0)
 	{
 		*f = 1;
-		new_exit();
+		new_exit(arg_0);
 	}
 	if (_strcmp(bi, "env") == 0)
 	{
@@ -54,13 +54,24 @@ char **check_bi(char *bi, char *arg_0, char *arg_1, char **env, int *f)
 
 /**
  * new_exit - Function to exit the shell.
+ * arg_0: Exit status, where status is an integer used to exit the shell.
  *
  * Description: Exits the shell.
  * Return: Void.
  */
-void new_exit(void)
+void new_exit(char *arg_0)
 {
-	exit(EXIT_SUCCESS);
+	int status;
+	
+	if (arg_0 == NULL)
+	{
+		exit(EXIT_SUCCESS);
+	}
+	else
+	{
+		status = atoi(arg_0);
+		exit(status);
+	}
 }
 
 /**
