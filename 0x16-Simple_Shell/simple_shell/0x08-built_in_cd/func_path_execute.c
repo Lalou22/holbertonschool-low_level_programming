@@ -88,7 +88,7 @@ void execute_path(char **_path, char **env)
 		i++;
 	}
 	if (_path[i] == NULL && b_in == 0)
-		printf("%s: %s: not found", _argv[0], _argv[1]);
+		printf("%s: %s: not found\n", _argv[0], _argv[1]);
 }
 
 /**
