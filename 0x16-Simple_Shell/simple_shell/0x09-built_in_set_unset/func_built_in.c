@@ -42,7 +42,7 @@ char **check_bi(char *bi, char *arg_0, char *arg_1, char **env, int *f)
 	if (_strcmp(bi, "cd") == 0)
 	{
 		*f = 5;
-		change_dir(arg_0, env);
+		new_env = change_dir(arg_0, env);
 	}
 	if (_strcmp(bi, "clear") == 0)
 	{
@@ -54,7 +54,7 @@ char **check_bi(char *bi, char *arg_0, char *arg_1, char **env, int *f)
 
 /**
  * new_exit - Function to exit the shell.
- * arg_0: Exit status, where status is an integer used to exit the shell.
+ * @arg_0: Exit status, where status is an integer used to exit the shell.
  *
  * Description: Exits the shell.
  * Return: Void.
@@ -62,7 +62,7 @@ char **check_bi(char *bi, char *arg_0, char *arg_1, char **env, int *f)
 void new_exit(char *arg_0)
 {
 	int status;
-	
+
 	if (arg_0 == NULL)
 	{
 		exit(EXIT_SUCCESS);
@@ -175,12 +175,12 @@ char **unset_env(char *var, char **env)
  * Description: Built-in function to change the folder.
  * Return: Void.
  */
-void change_dir(char *arg, char **env)
+char **change_dir(char *arg, char **env)
 {
 	int i, j;
-	char *path_line = "HOME=";
-	char *_path;
+	char *_path, *path_line = "HOME=", *pwd = "PWD", *pwd_path;
 	char s[100];
+	char **new_env = env;
 
 	if (arg == NULL)
 	{
@@ -198,6 +198,11 @@ void change_dir(char *arg, char **env)
 	{
 		_path = arg;
 	}
-	chdir(_path);
-	printf("$%s\n", getcwd(s, 100));
+	if (chdir(_path) == 0)
+	{
+		pwd_path = getcwd(s, 100);
+		printf("$%s\n", pwd_path);
+		new_env = set_env(pwd, pwd_path, env);
+	}
+	return (new_env);
 }
