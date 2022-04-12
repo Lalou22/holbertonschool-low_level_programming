@@ -50,5 +50,6 @@ char **make_env(char **env);
 void print_parse(char **args);
 char *get_env_var(char *var_name, char **env, int *index, int *len_);
 char **replace_variable(char **arg, char **env);
+char *int_to_str(int num);
 
 #endif /* _SHELL_H_ */

@@ -105,6 +105,7 @@ char **replace_variable(char **arg, char **env)
 	int i = 0, j = 0, len_ = -1, index = -1;
 	char **aux;
 	char *_line = "";
+	int parent_pid;
 
 	while (arg[i])
 	{
@@ -115,6 +116,11 @@ char **replace_variable(char **arg, char **env)
 		{
 			if (aux[j][0] == '$' && aux[j][1] != '$')
 				aux[j] = get_env_var(aux[j] + 1, env, &index, &len_);
+			if (aux[j][0] == '$' && aux[j][1] == '$')
+			{
+				parent_pid = getppid();
+				aux[j] = int_to_str(parent_pid);
+			}
 			if (j == 0)
 				_line = aux[j];
 			else
@@ -127,4 +133,41 @@ char **replace_variable(char **arg, char **env)
 		i++;
 	}
 	return (arg);
+}
+
+/**
+ * int_to_str - Function that transforms an integer to a string.
+ * @num: Integer to be transformed.
+ *
+ * Description: Function that transforms an integer to a string.
+ * Return: An array with the number.
+ */
+char *int_to_str(int num)
+{
+	char *aux;
+	int x = num, len, i = 0;
+
+	if (num >= 0)
+	{
+		aux = malloc(sizeof(char) * 2);
+		aux[0] = '0';
+		aux[1] = '\0';
+		return (aux);
+	}
+	while (x > 0)
+	{
+		x /= 10;
+		i++;
+	}
+	i--;
+	len = i;
+	aux = malloc(sizeof(char) * len);
+	x = num;
+	while (i >= 0)
+	{
+		aux[i--] = x % 10 + '0';
+		x /= 10;
+	}
+	aux[len + 1] = '\0';
+	return (aux);
 }
