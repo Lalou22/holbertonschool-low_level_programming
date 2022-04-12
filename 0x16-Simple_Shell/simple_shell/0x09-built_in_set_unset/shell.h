@@ -33,7 +33,7 @@ int _putchar(char c);
 /* Functions related to PATH and execute */
 char **find_path(char **env);
 char **path_com(char **_path, char *command);
-char **execute_path(char **_path, char **env);
+char **execute_path(char *_shell, char **_path, char **env);
 void func_exec(char *pathname, char **argv, char *const envp[]);
 char **split_line(char *line, char *delim, char *c1, char *c2);
 

@@ -58,6 +58,7 @@ char **path_com(char **_path, char *command)
 
 /**
  * execute_path - Function that checks the folder to execute the command.
+ * @_shell: Array with the name of the compile program.
  * @_path: Array with all the posibles folders to check.
  * @env: 2D-Char Pointer array with information about the env.
  *
@@ -65,7 +66,7 @@ char **path_com(char **_path, char *command)
  * Executes the command using "func_exec".
  * Return: Voids.
  */
-char **execute_path(char **_path, char **env)
+char **execute_path(char *_shell, char **_path, char **env)
 {
 	int i = 0, b_in = 0;
 	char *_env[] = {NULL};
@@ -92,7 +93,7 @@ char **execute_path(char **_path, char **env)
 			i++;
 		}
 		if (_path[i] == NULL)
-			printf("%s: %s: not found\n", _argv[0], _argv[1]);
+			printf("%s: %s: not found\n", _shell, _argv[0]);
 	}
 	return (new_env);
 }

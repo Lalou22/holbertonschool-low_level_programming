@@ -27,7 +27,7 @@ int main(int ac, char **av, char **env)
 		line = read_line();
 		_path = find_path(_env);
 		_path = path_com(_path, line);
-		_env = execute_path(_path, _env);
+		_env = execute_path(av[0], _path, _env);
 	}
 }
 
