@@ -32,12 +32,13 @@ char **find_path(char **env)
  * path_com - Function that concatenates the command to each folder on PATH.
  * @_path: 2D-pointer array with the folders on PATH.
  * @command: Command to be concatenated to each folder on PATH.
+ * @env: Array of strings of the environment.
  *
  * Description: Checks if the last char on each folder is '/' and then
  * concatenates the command to each folder (If needed puts the missing '/').
  * Return: Pointer to the resulting concatenated PATH + command.
  */
-char **path_com(char **_path, char *command)
+char **path_com(char **_path, char *command, char **env)
 {
 	int len, bufsize = 64, i = 0;
 	char *str;
@@ -53,6 +54,7 @@ char **path_com(char **_path, char *command)
 		i++;
 	}
 	tokens[i] = command;
+	tokens = replace_variable(tokens, env);
 	return (tokens);
 }
 

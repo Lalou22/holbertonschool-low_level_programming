@@ -64,7 +64,7 @@ char *get_env_var(char *var_name, char **env, int *index, int *len_)
 {
 	int len_var, len_env = 0, i = 0;
 	char *aux = NULL;
-	
+
 	*index = -1;
 	*len_ = -1;
 	if (var_name != NULL)
@@ -85,5 +85,46 @@ char *get_env_var(char *var_name, char **env, int *index, int *len_)
 		if (*index != -1)
 			aux = env[*index] + len_var + 1;
 	}
+	if (*index == -1)
+	{
+		aux = var_name;
+	}
 	return (aux);
+}
+
+/**
+ * replace_variable - Function that replace with a variable of the env.
+ * @arg: 2D-pointer array to be tested.
+ * @env: Array of strings of the environment.
+ *
+ * Description: Function that gets an variable on the environment.
+ * Return: String with the variable replaced (If found) or NULL.
+ */
+char **replace_variable(char **arg, char **env)
+{
+	int i = 0, j = 0, len_ = -1, index = -1;
+	char **aux;
+	char *_line = "";
+
+	while (arg[i])
+	{
+		_line = "";
+		aux = split_line(arg[i], " ", "", "");
+		j = 0;
+		while (aux[j])
+		{
+			if (aux[j][0] == '$' && aux[j][1] != '$')
+				aux[j] = get_env_var(aux[j] + 1, env, &index, &len_);
+			if (j == 0)
+				_line = aux[j];
+			else
+				_line = strcat(_line, aux[j]);
+			if (aux[j + 1])
+				_line = strcat(_line, " ");
+			j++;
+		}
+		arg[i] = _line;
+		i++;
+	}
+	return (arg);
 }
