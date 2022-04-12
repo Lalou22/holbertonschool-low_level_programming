@@ -85,20 +85,11 @@ void new_exit(char *arg_0)
  */
 char **set_env(char *var, char *val, char **env)
 {
-	int len_var, len_env = 0, index = -1, i = 0;
+	int len_env = -1, index = -1, i = 0;
 	char *str;
 	char **new_env;
 
-	len_var = _strlen(var);
-	while (env[len_env])
-	{
-		for (i = 0; i < len_var; i++)
-			if (var[i] != env[len_env][i])
-				break;
-		if (env[len_env][i] == '=')
-			index = len_env;
-		len_env++;
-	}
+	get_env_var(var, env, &index, &len_env);
 	str = _strcat(var, "=");
 	str = _strcat(str, val);
 	if (index != -1)
@@ -134,19 +125,10 @@ char **set_env(char *var, char *val, char **env)
  */
 char **unset_env(char *var, char **env)
 {
-	int len_var, len_env = 0, index = -1, i = 0, j = 0;
+	int len_env = -1, index = -1, i = 0, j = 0;
 	char **new_env;
 
-	len_var = _strlen(var);
-	while (env[len_env])
-	{
-		for (i = 0; i < len_var; i++)
-			if (var[i] != env[len_env][i])
-				break;
-		if (env[len_env][i] == '=')
-			index = len_env;
-		len_env++;
-	}
+	get_env_var(var, env, &index, &len_env);
 	if (index == -1)
 	{
 		return (env);
@@ -177,27 +159,14 @@ char **unset_env(char *var, char **env)
  */
 char **change_dir(char *arg, char **env)
 {
-	int i, j;
-	char *_path, *path_line = "HOME=", *pwd = "PWD", *pwd_path;
+	int len_env = -1, index = -1;
+	char *_path, *path_line = "HOME", *pwd = "PWD", *pwd_path;
 	char s[100];
 	char **new_env = env;
 
-	if (arg == NULL)
-	{
-		for (i = 0; env[i]; i++)
-		{
-			for (j = 0; j < 5; j++)
-				if (path_line[j] != env[i][j])
-					break;
-			if (j == 5)
-				break;
-		}
-		_path = env[i] + 5;
-	}
-	else
-	{
-		_path = arg;
-	}
+	_path = get_env_var(path_line, env, &index, &len_env);
+	if (arg != NULL)
+		_path = _strcat(_path, arg);
 	if (chdir(_path) == 0)
 	{
 		pwd_path = getcwd(s, 100);

@@ -49,3 +49,41 @@ void print_parse(char **args)
 		i++;
 	}
 }
+
+/**
+ * get_env_var - Function that gets an variable on the environment.
+ * @var_name: 2D-pointer array to be printed.
+ * @env: Array of strings of the environment.
+ * @index: Variable's position on the envirionment.
+ * @len_: Lenght of the environment.
+ *
+ * Description: Function that gets an variable on the environment.
+ * Return: String with the variable value (If found) or NULL.
+ */
+char *get_env_var(char *var_name, char **env, int *index, int *len_)
+{
+	int len_var, len_env = 0, i = 0;
+	char *aux = NULL;
+	
+	*index = -1;
+	*len_ = -1;
+	if (var_name != NULL)
+	{
+		len_var = _strlen(var_name);
+		while (env[len_env])
+		{
+			for (i = 0; i < len_var; i++)
+				if (var_name[i] != env[len_env][i])
+					break;
+			if (env[len_env][i] == '=')
+			{
+				*index = len_env;
+			}
+			len_env++;
+		}
+		*len_ = len_env;
+		if (*index != -1)
+			aux = env[*index] + len_var + 1;
+	}
+	return (aux);
+}

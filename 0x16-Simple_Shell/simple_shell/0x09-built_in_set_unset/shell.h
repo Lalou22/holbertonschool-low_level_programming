@@ -39,13 +39,14 @@ char **split_line(char *line, char *delim, char *c1, char *c2);
 
 /* Functions related to built-in commands */
 char** check_bi(char *bi, char *arg_0, char *arg_1, char **env, int *f);
-void new_exit(void);
+void new_exit(char *arg_0);
 char **set_env(char *var, char *val, char **env);
 char **unset_env(char *var, char **env);
-void change_dir(char *arg, char **env);
+char **change_dir(char *arg, char **env);
 
 /* Extra functions */
 char **make_env(char **env);
 void print_parse(char **args);
+char *get_env_var(char *var_name, char **env, int *index, int *len_);
 
 #endif /* _SHELL_H_ */
