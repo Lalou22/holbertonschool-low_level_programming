@@ -19,7 +19,6 @@ int main(int ac, char **av, char **env)
 	UNUSED(av);
 
 	_env = make_env(env);
-	_path = find_path(_env);
 
 	while (1)
 	{
@@ -29,5 +28,6 @@ int main(int ac, char **av, char **env)
 		_path = path_com(_path, line, _env);
 		_env = execute_path(av[0], _path, _env);
 	}
+	return (0);
 }
 
