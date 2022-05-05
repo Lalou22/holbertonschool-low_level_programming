@@ -14,14 +14,15 @@
  */
 size_t print_dlistint_backward(const dlistint_t *h)
 {
-	size_t a;
+	size_t a, temp;
 
 	for (a = 0; h->next != NULL; a++)
 		h = h->next;
+	temp = a + 1;
 	for (a = a + 1; a > 0; a--)
 	{
 		printf("%d\n", h->n);
 		h = h->prev;
 	}
-	return (a);
+	return (temp);
 }
