@@ -6,7 +6,7 @@
 
 /**
  * delete_dnodeint_at_index - Function deletes the node at index of a list.
- * @headh: Pointer to the head.
+ * @head: Pointer to the head.
  * @index: Index of the node that should be deleted. Index starts at 0.
  *
  * Description: Function that deletes the node at index index of a dlistint_t
