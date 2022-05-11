@@ -78,3 +78,35 @@ void mod(stack_t **stack, unsigned int line_number)
 		free(tmp);
 	}
 }
+
+/**
+ * pchar - Function that prints the char at the top of the stack.
+ * @stack: Stack saved on the variable monty.
+ * @line_number: (Unused) Line number of the file of the instruction.
+ *
+ * Description: Function that prints the char at the top of the stack.
+ * If the value is not in the ascii table print the error message.
+ * Function created for the Task 11.
+ * Return: void.
+ */
+void pchar(stack_t **stack, unsigned int line_number)
+{
+	/* Argument line_num is not used, to avoid error "multiples" void */
+	(void)(line_number);
+
+	if (!(*stack))
+	{
+		dprintf(STDERR_FILENO, "L%u: ", monty.line_num);
+		free_variables();
+		dprintf(STDERR_FILENO, "can't pchar, stack empty\n");
+		exit(EXIT_FAILURE);
+	}
+	if ((*stack)->n < 0 || (*stack)->n > 127)
+	{
+		dprintf(STDERR_FILENO, "L%u: ", monty.line_num);
+		free_variables();
+		dprintf(STDERR_FILENO, "can't pchar, value out of range\n");
+		exit(EXIT_FAILURE);
+	}
+	printf("%c\n", (*stack)->n);
+}
