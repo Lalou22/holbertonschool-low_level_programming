@@ -53,7 +53,6 @@ void add(stack_t **stack, unsigned int line_number)
 	/* Argument line_num is not used, to avoid error "multiples" void */
 	(void)(line_number);
 
-	/* Checks if the stack is NULL */
 	if (*stack && (*stack)->next)
 	{
 		(*stack)->next->n += (*stack)->n;
@@ -105,7 +104,6 @@ void sub(stack_t **stack, unsigned int line_number)
 	/* Argument line_num is not used, to avoid error "multiples" void */
 	(void)(line_number);
 
-	/* Checks if the stack is NULL */
 	if (*stack && (*stack)->next)
 	{
 		(*stack)->next->n -= (*stack)->n;
@@ -120,5 +118,46 @@ void sub(stack_t **stack, unsigned int line_number)
 		free_variables();
 		dprintf(STDERR_FILENO, "can't sub, stack too short\n");
 		exit(EXIT_FAILURE);
+	}
+}
+
+/**
+ * div - Function that divides the top two elements of the stack.
+ * @stack: Stack saved on the variable monty.
+ * @line_number: (Unused) Line number of the file of the instruction.
+ *
+ * Description: Function that divides the top two elements of the stack.
+ * If the stack contains less than two elements, print the error message.
+ * Function created for the Task 7.
+ * Return: void.
+ */
+void _div(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp;
+
+	/* Argument line_num is not used, to avoid error "multiples" void */
+	(void)(line_number);
+
+	if (!*stack || !(*stack)->next)
+	{
+		dprintf(STDERR_FILENO, "L%u: ", monty.line_num);
+		free_variables();
+		dprintf(STDERR_FILENO, "can't div, stack too short\n");
+		exit(EXIT_FAILURE);
+	}
+	if ((*stack)->n == 0)
+	{
+		dprintf(STDERR_FILENO, "L%u: ", monty.line_num);
+		free_variables();
+		dprintf(STDERR_FILENO, "division by zero\n");
+		exit(EXIT_FAILURE);
+	}
+	if (*stack && (*stack)->next)
+	{
+		(*stack)->next->n /= (*stack)->n;
+		tmp = *stack;
+		*stack = (*stack)->next;
+		(*stack)->prev = NULL;
+		free(tmp);
 	}
 }
