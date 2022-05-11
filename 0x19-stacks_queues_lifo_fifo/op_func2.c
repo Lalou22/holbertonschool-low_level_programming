@@ -70,3 +70,20 @@ void add(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 }
+
+/**
+ * nop - Function that doesn’t do anything.
+ * @stack: Stack saved on the variable monty.
+ * @line_number: (Unused) Line number of the file of the instruction.
+ *
+ * Description: Function that doesn’t do anything.
+ * Function created for the Task 5.
+ * Return: void.
+ */
+void nop(stack_t **stack, unsigned int line_number)
+{
+	/* Argument stack is not used, to avoid error "multiples" void */
+	(void)(stack);
+	/* Argument line_num is not used, to avoid error "multiples" void */
+	(void)(line_number);
+}

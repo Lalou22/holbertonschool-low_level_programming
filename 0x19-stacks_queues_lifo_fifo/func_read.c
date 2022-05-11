@@ -73,6 +73,7 @@ void get_operator(stack_t **stk, char *operator)
 		{"pop", pop},
 		{"swap", swap},
 		{"add", add},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 
