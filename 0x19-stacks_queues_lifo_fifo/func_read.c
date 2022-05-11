@@ -35,6 +35,7 @@ void read_line(void)
 		/* Operator must be stored as the first str in line */
 		operator = strtok(monty.line, " ");
 		/* Checks for comments and line jumps */
+		/* Task 10: this line is a comment (don’t do anything). */
 		if (*operator == '#' || *operator == '\n')
 		{
 			/* If found ignore them and continue */
