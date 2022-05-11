@@ -77,6 +77,7 @@ void get_operator(stack_t **stk, char *operator)
 		{"sub", sub},
 		{"div", _div},
 		{"mul", mul},
+		{"mod", mod},
 		{NULL, NULL}
 	};
 
