@@ -66,10 +66,11 @@ void read_line(void);
 void get_operator(stack_t **stk, char *operator);
 void free_variables(void);
 
-/* Functions related to pull, pall and pint. File: op_func1.c */
+/* Functions related to pull, pall, pint and pop. File: op_func1.c */
 void push_stk(char *arg);
 int check_int(char *arg);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */

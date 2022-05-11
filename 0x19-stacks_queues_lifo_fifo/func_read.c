@@ -70,6 +70,7 @@ void get_operator(stack_t **stk, char *operator)
 	instruction_t functions[] = {
 		{"pall", pall},
 		{"pint", pint},
+		{"pop", pop},
 		{NULL, NULL}
 	};
 
