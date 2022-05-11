@@ -69,6 +69,7 @@ void get_operator(stack_t **stk, char *operator)
 	char *monty_op;
 	instruction_t functions[] = {
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 

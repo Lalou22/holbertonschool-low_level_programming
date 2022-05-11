@@ -94,3 +94,30 @@ void pall(stack_t **stack, unsigned int line_number)
 		temp = temp->next;
 	}
 }
+
+/**
+ * pint - Function that prints an int in stack.
+ * @stack: Stack saved on the variable monty.
+ * @line_number: (Unused) Line number of the file of the instruction.
+ *
+ * Description: Function that prints an int in stack.
+ * Function created for the Task 1.
+ * Return: void.
+ */
+void pint(stack_t **stack, unsigned int line_number)
+{
+	/* Argument line_num is not used, to avoid error "multiples" void */
+	(void)(line_number);
+	
+	if (*stack == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%u: ", monty.line_num);
+		free_variables();
+		dprintf(STDERR_FILENO, "can't pint, stack empty\n");
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		printf("%d\n", (*stack)->n);
+	}
+}
