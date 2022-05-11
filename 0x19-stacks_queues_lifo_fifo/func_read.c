@@ -81,8 +81,8 @@ void get_operator(stack_t **stk, char *operator)
 			return;
 		}
 	}
-	dprintf(STDOUT_FILENO, "L%u: ", monty.line_num);
-	dprintf(STDOUT_FILENO, "unknown instruction %s\n", operator);
+	dprintf(STDERR_FILENO, "L%u: ", monty.line_num);
+	dprintf(STDERR_FILENO, "unknown instruction %s\n", operator);
 	exit(EXIT_FAILURE);
 }
 
