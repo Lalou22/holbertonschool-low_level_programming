@@ -110,3 +110,28 @@ void pchar(stack_t **stack, unsigned int line_number)
 	}
 	printf("%c\n", (*stack)->n);
 }
+
+/**
+ * pstr - Function that prints the string starting at the top of the stack.
+ * @stack: Stack saved on the variable monty.
+ * @line_number: (Unused) Line number of the file of the instruction.
+ *
+ * Description: Function that prints string starting at the top of the stack.
+ * The integer in each element of the stack is treated as the ascii value.
+ * Function created for the Task 12.
+ * Return: void.
+ */
+void pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp = *stack;
+
+	/* Argument line_num is not used, to avoid error "multiples" void */
+	(void)(line_number);
+
+	while (temp && temp->n > 0 && temp->n <= 127)
+	{
+		printf("%c", temp->n);
+		temp = temp->next;
+	}
+	printf("\n");
+}
