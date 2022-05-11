@@ -108,7 +108,7 @@ void pint(stack_t **stack, unsigned int line_number)
 {
 	/* Argument line_num is not used, to avoid error "multiples" void */
 	(void)(line_number);
-	
+
 	/* Checks if the stack is NULL */
 	if (*stack == NULL)
 	{
@@ -153,6 +153,6 @@ void pop(stack_t **stack, unsigned int line_number)
 		*stack = (*stack)->next;
 		if (*stack)
 			(*stack)->prev = NULL;
-		free(temp);		
+		free(temp);
 	}
 }
