@@ -73,9 +73,10 @@ void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 
-/* Functions related to swap, add and nop. File: op_func2.c */
+/* Functions related to swap, add, nop and sub. File: op_func2.c */
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */
