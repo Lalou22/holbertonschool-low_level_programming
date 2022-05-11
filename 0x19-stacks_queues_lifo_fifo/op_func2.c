@@ -122,7 +122,7 @@ void sub(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * div - Function that divides the top two elements of the stack.
+ * _div - Function that divides the top two elements of the stack.
  * @stack: Stack saved on the variable monty.
  * @line_number: (Unused) Line number of the file of the instruction.
  *
