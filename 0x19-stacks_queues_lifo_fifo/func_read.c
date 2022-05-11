@@ -46,7 +46,11 @@ void read_line(void)
 		else if (strcmp(operator, "push") == 0)
 		{
 			token = strtok(NULL, "\n ");
-			push_stk(token);
+			/* Modification done for the Task 15 */
+			if (monty.stk_use == 0)
+				push_stk(token);
+			else
+				push_queue(token);
 		}
 		else
 		{
@@ -83,6 +87,8 @@ void get_operator(stack_t **stk, char *operator)
 		{"pstr", pstr},
 		{"rotl", rotl},
 		{"rotr", rotr},
+		{"stack", _stack},
+		{"queue", _queue},
 		{NULL, NULL}
 	};
 
