@@ -142,7 +142,6 @@ void pstr(stack_t **stack, unsigned int line_number)
  * @line_number: (Unused) Line number of the file of the instruction.
  *
  * Description: Function that rotates the stack to the top.
- * The integer in each element of the stack is treated as the ascii value.
  * Function created for the Task 13.
  * Return: void.
  */
@@ -152,7 +151,7 @@ void rotl(stack_t **stack, unsigned int line_number)
 
 	/* Argument line_num is not used, to avoid error "multiples" void */
 	(void)(line_number);
-	
+
 	if (!*stack || !(*stack)->next)
 		return;
 

@@ -88,4 +88,7 @@ void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 
+/* Functions related to rotr. File: op_func4.c */
+void rotr(stack_t **stack, unsigned int line_number);
+
 #endif /* MONTY_H */
