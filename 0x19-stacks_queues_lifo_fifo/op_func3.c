@@ -135,3 +135,35 @@ void pstr(stack_t **stack, unsigned int line_number)
 	}
 	printf("\n");
 }
+
+/**
+ * rotl - Function that rotates the stack to the top.
+ * @stack: Stack saved on the variable monty.
+ * @line_number: (Unused) Line number of the file of the instruction.
+ *
+ * Description: Function that rotates the stack to the top.
+ * The integer in each element of the stack is treated as the ascii value.
+ * Function created for the Task 13.
+ * Return: void.
+ */
+void rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp_1, *temp_2;
+
+	/* Argument line_num is not used, to avoid error "multiples" void */
+	(void)(line_number);
+	
+	if (!*stack || !(*stack)->next)
+		return;
+
+	temp_1 = *stack;
+	temp_2 = (*stack)->next;
+	*stack = temp_2;
+	temp_2->prev = NULL;
+
+	while (temp_2->next)
+		temp_2 = temp_2->next;
+	temp_2->next = temp_1;
+	temp_1->next = NULL;
+	temp_1->prev = temp_2;
+}

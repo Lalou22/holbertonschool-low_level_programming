@@ -81,6 +81,7 @@ void get_operator(stack_t **stk, char *operator)
 		{"mod", mod},
 		{"pchar", pchar},
 		{"pstr", pstr},
+		{"rotl", rotl},
 		{NULL, NULL}
 	};
 
